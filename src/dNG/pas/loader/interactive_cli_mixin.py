@@ -58,11 +58,12 @@ Output stream used for writing
 	def input(self, prompt):
 	#
 		"""
-Outputs the given line. Additional positional arguments are used for string formatting.
+Reads one line of input.
 
-:param line: Output line
+:param prompt: Inline prompt
 
-:since: v0.1.00
+:return: (str) Cli input
+:since:  v0.1.00
 		"""
 
 		try: _return = raw_input(prompt)
@@ -74,7 +75,8 @@ Outputs the given line. Additional positional arguments are used for string form
 	def output(self, line, *args):
 	#
 		"""
-Outputs the given line. Additional positional arguments are used for string formatting.
+Outputs the given line. Additional positional arguments are used for string
+formatting.
 
 :param line: Output line
 
@@ -91,10 +93,32 @@ Outputs the given line. Additional positional arguments are used for string form
 		self.output_stream.writelines(( output, os.linesep ))
 	#
 
+	def output_error(self, line, *args):
+	#
+		"""
+Outputs the given error line. Additional positional arguments are used for
+string formatting.
+
+:param line: Output line
+
+:since: v0.1.00
+		"""
+
+		# pylint: disable=star-args
+
+		line = (line.format(*args)
+		        if (len(args) > 0) else
+		        line
+		       )
+
+		self.output("[{0}({1:d}) {2}] !!! {3}".format(self.__class__.__name__, self.output_pid, ctime(), line))
+	#
+
 	def output_info(self, line, *args):
 	#
 		"""
-Outputs the given line. Additional positional arguments are used for string formatting.
+Outputs the given informational line. Additional positional arguments are
+used for string formatting.
 
 :param line: Output line
 
@@ -114,11 +138,12 @@ Outputs the given line. Additional positional arguments are used for string form
 	def secure_input(self, prompt):
 	#
 		"""
-Outputs the given line. Additional positional arguments are used for string formatting.
+Reads one line of input without showing the user what he typed.
 
-:param line: Output line
+:param prompt: Inline prompt
 
-:since: v0.1.00
+:return: (str) Cli input
+:since:  v0.1.00
 		"""
 
 		return getpass(prompt)
