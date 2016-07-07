@@ -28,11 +28,11 @@ class InteractiveCliMixin(object):
 	"""
 This mixin provides methods to handle console input and output.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  (C) direct Netware Group - All rights reserved
 :package:    pas
 :subpackage: interactive_cli
-:since:      v0.1.00
+:since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
 	"""
@@ -42,7 +42,7 @@ This mixin provides methods to handle console input and output.
 		"""
 Constructor __init__(InteractiveCliMixin)
 
-:since: v0.1.00
+:since: v0.2.00
 		"""
 
 		self.output_pid = os.getpid()
@@ -63,7 +63,7 @@ Reads one line of input.
 :param prompt: Inline prompt
 
 :return: (str) Cli input
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		try: _return = raw_input(prompt)
@@ -80,7 +80,7 @@ formatting.
 
 :param line: Output line
 
-:since: v0.1.00
+:since: v0.2.00
 		"""
 
 		# pylint: disable=star-args
@@ -101,7 +101,7 @@ string formatting.
 
 :param line: Output line
 
-:since: v0.1.00
+:since: v0.2.00
 		"""
 
 		# pylint: disable=star-args
@@ -122,7 +122,7 @@ used for string formatting.
 
 :param line: Output line
 
-:since: v0.1.00
+:since: v0.2.00
 		"""
 
 		# pylint: disable=star-args
@@ -143,7 +143,7 @@ Reads one line of input without showing the user what he typed.
 :param prompt: Inline prompt
 
 :return: (str) Cli input
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return getpass(prompt)

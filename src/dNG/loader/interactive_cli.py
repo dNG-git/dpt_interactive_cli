@@ -26,11 +26,11 @@ class InteractiveCli(Cli, InteractiveCliMixin):
 	"""
 "InteractiveCli" extends simple ones with input and output aware methods.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  (C) direct Netware Group - All rights reserved
 :package:    pas
 :subpackage: interactive_cli
-:since:      v0.1.00
+:since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
 	"""
@@ -44,7 +44,7 @@ Constructor __init__(InteractiveCli)
 
 :param args: Parsed command line arguments
 
-:since: v0.1.00
+:since: v0.2.00
 		"""
 
 		Cli.__init__(self)
