@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -24,8 +23,7 @@ import os
 import sys
 
 class InteractiveCliMixin(object):
-#
-	"""
+    """
 This mixin provides methods to handle console input and output.
 
 :author:     direct Netware Group et al.
@@ -35,119 +33,111 @@ This mixin provides methods to handle console input and output.
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
-	"""
+    """
 
-	def __init__(self):
-	#
-		"""
+    def __init__(self):
+        """
 Constructor __init__(InteractiveCliMixin)
 
 :since: v0.2.00
-		"""
+        """
 
-		self.output_pid = os.getpid()
-		"""
+        self.output_pid = os.getpid()
+        """
 PID used for output separation
-		"""
-		self.output_stream = sys.stdout
-		"""
+        """
+        self.output_stream = sys.stdout
+        """
 Output stream used for writing
-		"""
-	#
+        """
+    #
 
-	def input(self, prompt):
-	#
-		"""
+    def input(self, prompt):
+        """
 Reads one line of input.
 
 :param prompt: Inline prompt
 
 :return: (str) Cli input
 :since:  v0.2.00
-		"""
+        """
 
-		try: _return = raw_input(prompt)
-		except NameError: _return = input(prompt)
+        try: _return = raw_input(prompt)
+        except NameError: _return = input(prompt)
 
-		return _return
-	#
+        return _return
+    #
 
-	def output(self, line, *args):
-	#
-		"""
+    def output(self, line, *args):
+        """
 Outputs the given line. Additional positional arguments are used for string
 formatting.
 
 :param line: Output line
 
 :since: v0.2.00
-		"""
+        """
 
-		# pylint: disable=star-args
+        # pylint: disable=star-args
 
-		output = (line.format(*args)
-		          if (len(args) > 0) else
-		          line
-		         )
+        output = (line.format(*args)
+                  if (len(args) > 0) else
+                  line
+                 )
 
-		self.output_stream.writelines(( output, os.linesep ))
-	#
+        self.output_stream.writelines(( output, os.linesep ))
+    #
 
-	def output_error(self, line, *args):
-	#
-		"""
+    def output_error(self, line, *args):
+        """
 Outputs the given error line. Additional positional arguments are used for
 string formatting.
 
 :param line: Output line
 
 :since: v0.2.00
-		"""
+        """
 
-		# pylint: disable=star-args
+        # pylint: disable=star-args
 
-		line = (line.format(*args)
-		        if (len(args) > 0) else
-		        line
-		       )
+        line = (line.format(*args)
+                if (len(args) > 0) else
+                line
+               )
 
-		self.output("[{0}({1:d}) {2}] !!! {3}".format(self.__class__.__name__, self.output_pid, ctime(), line))
-	#
+        self.output("[{0}({1:d}) {2}] !!! {3}".format(self.__class__.__name__, self.output_pid, ctime(), line))
+    #
 
-	def output_info(self, line, *args):
-	#
-		"""
+    def output_info(self, line, *args):
+        """
 Outputs the given informational line. Additional positional arguments are
 used for string formatting.
 
 :param line: Output line
 
 :since: v0.2.00
-		"""
+        """
 
-		# pylint: disable=star-args
+        # pylint: disable=star-args
 
-		line = (line.format(*args)
-		        if (len(args) > 0) else
-		        line
-		       )
+        line = (line.format(*args)
+                if (len(args) > 0) else
+                line
+               )
 
-		self.output("[{0}({1:d}) {2}] {3}".format(self.__class__.__name__, self.output_pid, ctime(), line))
-	#
+        self.output("[{0}({1:d}) {2}] {3}".format(self.__class__.__name__, self.output_pid, ctime(), line))
+    #
 
-	def secure_input(self, prompt):
-	#
-		"""
+    def secure_input(self, prompt):
+        """
 Reads one line of input without showing the user what he typed.
 
 :param prompt: Inline prompt
 
 :return: (str) Cli input
 :since:  v0.2.00
-		"""
+        """
 
-		return getpass(prompt)
-	#
+        return getpass(prompt)
+    #
 #
-
-##j## EOF

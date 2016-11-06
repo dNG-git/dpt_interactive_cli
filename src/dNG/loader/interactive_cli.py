@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -22,8 +21,7 @@ from .cli import Cli
 from .interactive_cli_mixin import InteractiveCliMixin
 
 class InteractiveCli(Cli, InteractiveCliMixin):
-#
-	"""
+    """
 "InteractiveCli" extends simple ones with input and output aware methods.
 
 :author:     direct Netware Group et al.
@@ -33,23 +31,20 @@ class InteractiveCli(Cli, InteractiveCliMixin):
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
-	"""
+    """
 
-	# pylint: disable=unused-argument
+    # pylint: disable=unused-argument
 
-	def __init__(self):
-	#
-		"""
+    def __init__(self):
+        """
 Constructor __init__(InteractiveCli)
 
 :param args: Parsed command line arguments
 
 :since: v0.2.00
-		"""
+        """
 
-		Cli.__init__(self)
-		InteractiveCliMixin.__init__(self)
-	#
+        Cli.__init__(self)
+        InteractiveCliMixin.__init__(self)
+    #
 #
-
-##j## EOF
