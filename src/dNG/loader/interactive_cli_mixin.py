@@ -78,8 +78,6 @@ formatting.
 :since: v0.2.00
         """
 
-        # pylint: disable=star-args
-
         output = (line.format(*args)
                   if (len(args) > 0) else
                   line
@@ -98,8 +96,6 @@ string formatting.
 :since: v0.2.00
         """
 
-        # pylint: disable=star-args
-
         line = (line.format(*args)
                 if (len(args) > 0) else
                 line
@@ -117,8 +113,6 @@ used for string formatting.
 
 :since: v0.2.00
         """
-
-        # pylint: disable=star-args
 
         line = (line.format(*args)
                 if (len(args) > 0) else
