@@ -1,8 +1,12 @@
 __py*
 .*
+*.egg-info
 *.pyc
 nbproject
 /_extras
 /build
-/make*.py*
-/pas_interactive_cli.*
+/dist
+/dpt_interactive_cli*
+/dpt-interactive-cli*
+/makefile.*
+/MANIFEST
