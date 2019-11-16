@@ -19,7 +19,6 @@ https://www.direct-netware.de/redirect?licenses;mpl2
 
 from time import ctime
 import os
-import sys
 
 from dpt_runtime.traced_exception import TracedException
 from prompt_toolkit import print_formatted_text, HTML
@@ -38,6 +37,8 @@ This mixin provides methods to handle console input and output.
 :license:    https://www.direct-netware.de/redirect?licenses;mpl2
              Mozilla Public License, v. 2.0
     """
+
+    # pylint: disable=assigning-non-slot
 
     _mixin_slots_ = [ "prompt_session", "output_pid" ]
     """
