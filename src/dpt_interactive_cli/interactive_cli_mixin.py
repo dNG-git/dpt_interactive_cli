@@ -20,6 +20,10 @@ https://www.direct-netware.de/redirect?licenses;mpl2
 from time import ctime
 import os
 
+try: from html import escape as html_escape
+except ImportError: from cgi import escape as html_escape
+
+from dpt_runtime.binary import Binary
 from dpt_runtime.traced_exception import TracedException
 from prompt_toolkit import print_formatted_text, HTML
 from prompt_toolkit.output import create_output, get_default_output, set_default_output
@@ -132,12 +136,7 @@ formatting.
 :since: v1.0.0
         """
 
-        output = (line.format(*args)
-                  if (len(args) > 0) else
-                  line
-                 )
-
-        print_formatted_text(output)
+        print_formatted_text(line.format(*args) if (len(args) > 0) else line)
     #
 
     def output_error(self, line, *args):
@@ -150,10 +149,9 @@ string formatting.
 :since: v1.0.0
         """
 
-        line = (line.format(*args)
-                if (len(args) > 0) else
-                line
-               )
+        line = Binary.str(line)
+        if (type(line) is not str): line = str(line)
+        line = html_escape(line.format(*args) if (len(args) > 0) else line)
 
         self.output_formatted("<small>[{0}({1:d}) {2}]</small> <strong>{3}</strong>",
                               self.__class__.__name__,
@@ -173,12 +171,7 @@ used for string formatting.
 :since: v1.0.0
         """
 
-        output = HTML(line.format(*args)
-                      if (len(args) > 0) else
-                      line
-                     )
-
-        print_formatted_text(output)
+        print_formatted_text(HTML(Binary.utf8(line.format(*args) if (len(args) > 0) else line)))
     #
 
     def output_info(self, line, *args):
@@ -191,10 +184,9 @@ used for string formatting.
 :since: v1.0.0
         """
 
-        line = (line.format(*args)
-                if (len(args) > 0) else
-                line
-               )
+        line = Binary.str(line)
+        if (type(line) is not str): line = str(line)
+        line = html_escape(line.format(*args) if (len(args) > 0) else line)
 
         self.output_formatted("<small>[{0}({1:d}) {2}]</small> {3}",
                               self.__class__.__name__,
