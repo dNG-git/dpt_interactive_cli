@@ -25,9 +25,8 @@ except ImportError: from cgi import escape as html_escape
 
 from dpt_runtime.binary import Binary
 from dpt_runtime.traced_exception import TracedException
-from prompt_toolkit import print_formatted_text, HTML
-from prompt_toolkit.output import create_output, get_default_output, set_default_output
-from prompt_toolkit.shortcuts import PromptSession
+from prompt_toolkit import HTML, print_formatted_text, PromptSession
+from prompt_toolkit.output import create_output
 
 class InteractiveCliMixin(object):
     """
@@ -70,7 +69,7 @@ prompt_toolkit based input prompt session
 PID used for output separation
         """
 
-        self.prompt_session = PromptSession(mouse_support = True)
+        self.output_stream = None
     #
 
     @property
@@ -78,13 +77,11 @@ PID used for output separation
         """
 Returns the current output stream pointer in use.
 
-:param prompt: Inline prompt
-
 :return: (int) Stream pointer number
 :since:  v1.0.0
         """
 
-        return get_default_output().fileno()
+        return self.prompt_session.output.fileno()
     #
 
     @output_stream.setter
@@ -97,7 +94,9 @@ Sets the output stream pointer to use.
 :since: v1.0.0
         """
 
-        set_default_output(create_output(pointer))
+        self.prompt_session = PromptSession(output = (None if (pointer is None) else create_output(pointer)),
+                                            mouse_support = True
+                                           )
     #
 
     def error(self, _exception):
