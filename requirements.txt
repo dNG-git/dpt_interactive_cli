@@ -1,3 +1,4 @@
-prompt_toolkit>=2,<3
-git+git://git.direct-netware.de/dpt/cli/@v1.0.1#egg=dpt-cli
-git+git://git.direct-netware.de/dpt/runtime/@v1.0.2#egg=dpt-runtime
+prompt_toolkit>=2,<4
+
+dpt-cli>=1,<2
+dpt-runtime>=1,<2
