@@ -23,8 +23,8 @@ import os
 try: from html import escape as html_escape
 except ImportError: from cgi import escape as html_escape
 
-from dpt_runtime.binary import Binary
-from dpt_runtime.traced_exception import TracedException
+from dpt_runtime import Binary
+from dpt_runtime.exceptions import TracedException
 from prompt_toolkit import HTML, print_formatted_text, PromptSession
 from prompt_toolkit.output import create_output
 
