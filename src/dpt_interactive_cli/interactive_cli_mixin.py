@@ -43,7 +43,7 @@ This mixin provides methods to handle console input and output.
 
     # pylint: disable=assigning-non-slot
 
-    _mixin_slots_ = [ "prompt_session", "output_pid" ]
+    _mixin_slots_ = ( "prompt_session", "output_pid" )
     """
 Additional __slots__ used for inherited classes.
     """
